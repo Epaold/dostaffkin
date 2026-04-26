@@ -1,27 +1,17 @@
 <div class="container">
-
-
     <app-header />
-
-
     <main class="track-content">
-
-
         <section class="track-card track-search">
             <div class="track-title">Отследить посылку</div>
             <div class="track-action">
                 <div class="main-field track-field">
-                    <input id="trackNumber" [(ngMode)]="trackNumber" placeholder="Введите номер посылки"
+                    <input id="trackNumber" [(ngModel)]="trackNumber" placeholder="Введите номер посылки"
                         autocomplete="off" />
                 </div>
                 <button id="trackButton" class="button track-button" type="button"
                     (click)="trackShipment()">Отследить</button>
             </div>
         </section>
-
-
-
-
         <section class="track-card track-result" id="trackResult" [class.is-visible]="trackResult()">
             <div class="track-result-header">
                 <div class="track-id" id="trackIdValue"></div>
@@ -37,7 +27,7 @@
                             </svg>
                         </div>
                         <div class="track-route-address" id="trackFromValue">
-                            Откуда:{{trackResult()?.route.from}}
+                            Откуда: {{trackResult()?.route.from}}
                         </div>
                     </div>
                     <div class="track-route track-route-arrow">
@@ -66,7 +56,6 @@
             <div class="track-info">
                 <div class="track-status-title">Статус данной посылки:</div>
                 <div class="track-status-list" id="trackStatusList">
-
                     @for (status of trackResult()?.statuses; track status.type + status.date) {
                     <div class="track-status" [class]="status.type">
                         <img class="track-status-icon" [src]="'images/icons/' + status.type + '.svg'"
@@ -77,13 +66,8 @@
                         </div>
                     </div>
                     }
-
-
                 </div>
             </div>
         </section>
-
     </main>
-
-
 </div>
